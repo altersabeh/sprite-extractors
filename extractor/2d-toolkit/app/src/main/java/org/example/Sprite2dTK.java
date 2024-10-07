@@ -9,8 +9,9 @@ import java.io.*;
 public class Sprite2dTK {
 
     public static void main(String args[]) throws Exception {
-        if (args.length == 0) {
-            System.out.println("Please provide the base name of the sprite sheet.");
+        if (args.length != 1 || args[0].equals("--help") || args[0].equals("-h")) {
+            System.out.println("Usage: sprite_extractor_2dtk[.jar] [OPTION] SPRITE_SHEET");
+            printHelp();
             return;
         }
 
@@ -26,5 +27,19 @@ public class Sprite2dTK {
 
         File outputDir = new File(baseName);
         SpriteExtractor.extract(spriteSheet, outputDir);
+    }
+
+    private static void printHelp() {
+        String helpMessage = """
+                A tool to extract sprites from a 2D Toolkit spritesheet.
+
+                Arguments:
+                  SPRITE_SHEET    Base name of the sprite sheet files (without extension).
+                                  The tool will look for corresponding .bytes and .png files.
+
+                Options:
+                  --help, -h      Show this help message and exit.
+                """;
+        System.out.println(helpMessage);
     }
 }
