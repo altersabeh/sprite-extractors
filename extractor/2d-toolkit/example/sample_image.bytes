@@ -1,0 +1,204 @@
+i tk2d 1
+w 1024
+h 300
+~
+n item_portable_coil_asst_portable_coil_bolt1_f1
+s 772 244 36 37
+o 0 0 40 42
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt1_f2
+s 840 1 33 38
+o 0 0 41 41
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt1_f3
+s 825 78 34 38
+o 0 0 40 43
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt1_f4
+s 825 118 34 37
+o 0 0 41 42
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt1_f5
+s 810 244 35 38
+o 0 0 41 42
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt2_f1
+s 704 247 33 45
+o 7 8 45 59
+~
+n item_portable_coil_asst_portable_coil_bolt2_f2
+s 295 264 49 34
+o 6 7 45 61
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt2_f3
+s 651 249 51 36
+o 6 6 47 61
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt2_f4
+s 346 264 49 34
+o 5 6 46 60
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt2_f5
+s 397 264 47 34
+o 7 4 47 55
+r 1
+~
+n item_portable_coil_asst_portable_coil_bolt2_f6
+s 739 247 31 44
+o 9 4 47 52
+~
+n item_portable_coil_asst_portable_coil_death_f1
+s 239 1 83 111
+o 1 1 85 112
+~
+n item_portable_coil_asst_portable_coil_death_f2
+s 494 1 83 97
+o 1 5 85 102
+~
+n item_portable_coil_asst_portable_coil_death_f3
+s 409 1 83 102
+o 1 5 85 107
+~
+n item_portable_coil_asst_portable_coil_death_f4
+s 418 105 83 102
+o 1 5 85 107
+~
+n item_portable_coil_asst_portable_coil_death_f5
+s 236 125 95 99
+o 4 15 103 110
+r 1
+~
+n item_portable_coil_asst_portable_coil_death_f6
+s 120 125 114 115
+o 0 10 119 127
+~
+n item_portable_coil_asst_portable_coil_death_f7
+s 1 130 117 125
+o 0 3 124 128
+~
+n item_portable_coil_asst_portable_coil_death_f8
+s 120 1 117 122
+o 0 2 133 123
+r 1
+~
+n item_portable_coil_asst_portable_coil_death_f9
+s 1 1 117 127
+o 6 3 145 124
+r 1
+~
+n item_portable_coil_asst_portable_coil_death_f10
+s 840 41 30 34
+o 0 2 34 36
+r 1
+~
+n item_portable_coil_asst_portable_coil_f1
+s 747 183 86 59
+o 4 7 90 66
+~
+n item_portable_coil_asst_portable_coil_f2
+s 572 192 85 55
+o 2 3 87 58
+~
+n item_portable_coil_asst_portable_coil_f3
+s 659 183 86 62
+o 4 7 91 69
+~
+n item_portable_coil_asst_portable_coil_f4
+s 333 114 83 106
+o 1 1 85 107
+~
+n item_portable_coil_asst_portable_coil_f5
+s 324 1 83 111
+o 1 1 85 112
+~
+n item_portable_coil_asst_portable_coil_glow
+s 120 242 10 10
+~
+n item_portable_coil_asst_portable_coil_shadow
+s 446 251 97 48
+o 0 1 97 49
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f1
+s 754 78 69 77
+o 20 20 116 104
+r 1
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f2
+s 667 1 82 86
+o 19 10 116 104
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f3
+s 579 1 86 87
+o 17 11 116 104
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f4
+s 503 100 88 90
+o 16 9 116 104
+r 1
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f5
+s 593 90 81 91
+o 15 12 116 104
+r 1
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f6
+s 676 89 76 92
+o 15 16 116 104
+r 1
+~
+n item_portable_coil_hit_asst_portable_coil_hit_f7
+s 751 1 87 75
+o 15 17 116 104
+~
+n portable_coil_lightning_fx_0001
+s 146 242 147 48
+o 182 25 376 104
+~
+n portable_coil_lightning_fx_0002
+s 146 242 147 48
+o 182 25 376 104
+~
+n portable_coil_lightning_fx_0003
+s 295 226 147 36
+o 195 31 376 104
+~
+n portable_coil_lightning_fx_0004
+s 295 226 147 36
+o 195 31 376 104
+~
+n portable_coil_lightning_fx_0005
+s 1 257 143 38
+o 198 31 376 104
+~
+n portable_coil_lightning_fx_0006
+s 1 257 143 38
+o 198 31 376 104
+~
+n portable_coil_lightning_fx_0007
+s 444 209 126 40
+o 201 31 376 104
+~
+n portable_coil_lightning_fx_0008
+s 444 209 126 40
+o 201 31 376 104
+~
+n portable_coil_lightning_fx_0009
+s 545 251 104 38
+o 202 32 376 104
+~
+n portable_coil_lightning_fx_0010
+s 545 251 104 38
+o 202 32 376 104
+~
+n portable_coil_lightning_fx_0011
+s 132 242 3 3
+o 0 0 376 104
+~
