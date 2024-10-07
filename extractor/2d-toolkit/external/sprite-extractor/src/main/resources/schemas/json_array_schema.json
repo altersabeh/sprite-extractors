@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/json_array_schema.json",
+  "type": "object",
+  "definitions": {
+    "frameDefinition": {
+      "properties": {
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/spriteDefinition"
+          }
+        }
+      }
+    },
+    "spriteDefinition": {
+      "type": "object",
+      "properties": {
+        "filename": {"type": "string"},
+        "frame": {"$ref": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/addons.json#definitions/x_y_w_h"},
+        "rotated": {"type": "boolean"},
+        "trimmed": {"type": "boolean"},
+        "spriteSourceSize": {"$ref": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/addons.json#definitions/x_y_w_h"},
+        "sourceSize": {"$ref": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/addons.json#definitions/w_h"}
+      },
+      "required": ["filename", "frame", "rotated", "trimmed", "spriteSourceSize", "sourceSize"]
+    },
+    "metaDefinition": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "image": {"type": "string"},
+            "format": {"type": "string"},
+            "size": {"$ref": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/addons.json#definitions/w_h"},
+            "scale": {"type": "string"}
+          },
+          "required": ["image", "format", "size", "scale"],
+          "additionalProperties": true
+        }
+      }
+    }
+  },
+  "allOf": [
+    {"$ref": "#/definitions/frameDefinition"},
+    {"$ref": "#/definitions/metaDefinition"}
+  ],
+  "required": ["frames", "meta"]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/kjarrio/SpriteExtractor/main/src/main/resources/schemas/blacksmith_2d_schema.json",
+  "type": "object",
+  "definitions": {
+    "frameDefinition": {
+      "properties": {
+        "frames": {
+          "type": "object",
+          "patternProperties": {"^.*$": {"$ref": "#/definitions/spriteDefinition"}}
+        }
+      }
+    },
+    "spriteDefinition": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {"type": "integer", "minimum": 0, "additionalItems": false}
+    },
+    "formatDefinition": {"properties": {"format": {"type": "string", "minLength": 3, "maxLength": 3, "enum": ["bta"]}}},
+    "vDefinition": {"properties": {"v": {"type": "string", "minLength": 3, "maxLength": 3, "enum": ["1.0"]}}}
+  },
+  "allOf": [
+    {"$ref": "#/definitions/frameDefinition"},
+    {"$ref": "#/definitions/formatDefinition"},
+    {"$ref": "#/definitions/vDefinition"}
+  ],
+  "required": ["frames", "format", "v"]
+}
