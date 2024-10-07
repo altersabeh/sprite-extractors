@@ -23,17 +23,18 @@ def unpack_love2d(config_base_name, verbose=False, no_color=False):
 
     # Extract and save each sprite
     for key, value in config.items():
-        size = value['size']
+        # size = value['size']
         f_quad = value['f_quad']
         trim = value['trim']
         spritesheet_name = value['a_name']
 
         # Execute only if the spritesheet_name extension is .pkm
-        if spritesheet_name.endswith('.pkm'):
-            # Change the extension from .pkm to .png
-            spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
-        else:
-            spritesheet_name_png = spritesheet_name
+        # if spritesheet_name.endswith('.pkm'):
+        #     # Change the extension from .pkm to .png
+        #     spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
+        # else:
+        #     spritesheet_name_png = spritesheet_name
+        spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
 
         # Load the spritesheet if not already loaded
         if spritesheet_name_png not in spritesheets:
