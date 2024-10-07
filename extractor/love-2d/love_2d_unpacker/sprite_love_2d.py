@@ -40,7 +40,7 @@ def unpack_love2d(config_base_name):
             spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
 
         # Extract the sprite using the coordinates and dimensions
-        sprite = spritesheet.crop(
+        sprite = spritesheets[spritesheet_name_png].crop(
             (f_quad[1], f_quad[2], f_quad[1] + f_quad[3], f_quad[2] + f_quad[4]))
 
         # Apply the trim values
