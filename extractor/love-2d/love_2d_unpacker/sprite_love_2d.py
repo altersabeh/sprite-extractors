@@ -57,4 +57,4 @@ def unpack_love2d(config_base_name):
                 sprite.save(os.path.join(output_dir, f'{
                             value['alias'][alias_name]}.png'))
 
-    print(f"{config_base_name} extracted successfully.")
+    # print(f"{config_base_name} extracted successfully.")
