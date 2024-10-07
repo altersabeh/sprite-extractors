@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "cocos-2dx-unpacker"
+version = "1.0.0"
+description = "A simple tool to extract sprites from Cocos2d-x games."
+authors = ["AlterSabeh <betamaximum22@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pillow = "^10.4.0"
+
+
+[tool.poetry.scripts]
+sprite_extractor_cocos2dx = "cocos_2dx_unpacker:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
