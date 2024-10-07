@@ -1,41 +1,37 @@
 import os
+import re
 import sys
-from love_2d_unpacker.sprite_love_2d import unpack_love2d
+
+from love_2d_unpacker.utils.argument_parser import parse_arguments
+from love_2d_unpacker.utils.constants import known_options
+from love_2d_unpacker.utils.print.help import print_help_message
+from love_2d_unpacker.utils.process.all import process_all_files
+from love_2d_unpacker.utils.process.pattern import process_files_by_pattern
+from love_2d_unpacker.utils.process.single import process_single_file
 
 
-def print_help():
-    help_message = """\033[1;34mA tool to extract sprites from a LÖVE2D spritesheet.
-
-\033[1;33mUsage:\033[0m
-  sprite_extractor_love2d \033[38;5;214m[OPTION] \033[1;35mSPRITE_SHEET<.lua,.png>\033[0m
-
-\033[1;33mArguments:\033[0m
-  \033[1;32mSPRITE_SHEET\033[0m    Base name of the sprite sheet files (without extension). 
-                  The tool will look for corresponding .lua and .png files.
-
-\033[1;33mOptions:\033[0m
-  \033[1;32m--help, -h\033[0m      Show this help message and exit.
-"""
-    print(help_message)
+def print_usage_message(no_color):
+    print("\033[1;34mA tool to extract sprites from a LÖVE2D spritesheet.")
+    print("\033[1;33mUsage:\033[0m sprite_extractor_love2d \033[38;5;214m[OPTION(S)] \033[1;35mSPRITE_SHEET<.lua,.png>\033[0m")
+    print(
+        "\033[1;31mMissing Operand:\033[0m Try \033[1;32m'-h'\033[0m or \033[1;32m'--help'\033[0m for more information.")
 
 
 def main():
-    if len(sys.argv) != 2 or sys.argv[1] in {'--help', '-h'}:
-        print_help()
+    if len(sys.argv) < 2:
+        print_usage_message('--no-color' in sys.argv)
         sys.exit(1)
 
-    config_base_name = sys.argv[1]
-    lua_file = f"{config_base_name}.lua"
-    png_file = f"{config_base_name}.png"
+    verbose = '--verbose' in sys.argv or '-v' in sys.argv
+    no_color = '--no-color' in sys.argv
 
-    if not os.path.exists(lua_file):
-        print(f"\033[1;31mError:\033[0m \033[1;33m{lua_file}\033[0m not found. Make sure you have both \033[1;33m{
-              lua_file}\033[0m and \033[1;33m{png_file}\033[0m in the same directory.")
-        sys.exit(1)
+    log_file, pattern = parse_arguments(sys.argv[1:], known_options, no_color)
 
-    if not os.path.exists(png_file):
-        print(f"\033[1;31mError:\033[0m \033[1;33m{png_file}\033[0m not found. Make sure you have both \033[1;33m{
-              lua_file}\033[0m and \033[1;33m{png_file}\033[0m in the same directory.")
-        sys.exit(1)
-
-    unpack_love2d(config_base_name)
+    if 'all' in sys.argv:
+        process_all_files(verbose, no_color, log_file)
+    elif pattern:
+        process_files_by_pattern(verbose, no_color, log_file, pattern)
+    else:
+        config_base_name = next(
+            (arg for arg in sys.argv[1:] if not arg.startswith('-')), None)
+        process_single_file(config_base_name, verbose, no_color, log_file)

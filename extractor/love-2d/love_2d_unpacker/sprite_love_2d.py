@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 from lupa import LuaRuntime
 
 
-def unpack_love2d(config_base_name):
+def unpack_love2d(config_base_name, verbose=False, no_color=False):
     # Load the Lua configuration
     lua = LuaRuntime(unpack_returned_tuples=True)
     lua_config_file = f'{config_base_name}.lua'
@@ -19,6 +19,8 @@ def unpack_love2d(config_base_name):
     # Dictionary to cache loaded spritesheets
     spritesheets = {}
 
+    sprite_count = 0
+
     # Extract and save each sprite
     for key, value in config.items():
         size = value['size']
@@ -26,18 +28,17 @@ def unpack_love2d(config_base_name):
         trim = value['trim']
         spritesheet_name = value['a_name']
 
-        # Change the extension from .pkm to .png
-        spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
+        # Execute only if the spritesheet_name extension is .pkm
+        if spritesheet_name.endswith('.pkm'):
+            # Change the extension from .pkm to .png
+            spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
+        else:
+            spritesheet_name_png = spritesheet_name
 
         # Load the spritesheet if not already loaded
         if spritesheet_name_png not in spritesheets:
             spritesheets[spritesheet_name_png] = Image.open(
                 spritesheet_name_png)
-
-        # Execute only if the a_name extension is .pkm
-        if spritesheet_name.endswith('.pkm'):
-            # Change the extension from .pkm to .png
-            spritesheet_name_png = spritesheet_name.replace('.pkm', '.png')
 
         # Extract the sprite using the coordinates and dimensions
         sprite = spritesheets[spritesheet_name_png].crop(
@@ -49,12 +50,27 @@ def unpack_love2d(config_base_name):
 
         # Save the sprite as an individual image file in the output directory
         sprite.save(os.path.join(output_dir, f'{key}.png'))
+        sprite_count += 1
+
+        if verbose:
+            if no_color:
+                print(f"[VERBOSE] Extracted Sprite: {key}.png")
+            else:
+                print(
+                    f"\033[1;34m[VERBOSE]\033[0m \033[1;35mExtracted Sprite:\033[0m {key}.png")
 
         # Check for alias key and save aliases as well
         if 'alias' in value:
             for alias_name in value['alias']:
-                # Print alias name
-                sprite.save(os.path.join(output_dir, f'{
-                            value['alias'][alias_name]}.png'))
+                alias_file = os.path.join(
+                    output_dir, f'{value["alias"][alias_name]}.png')
+                sprite.save(alias_file)
+                sprite_count += 1
+                if verbose:
+                    if no_color:
+                        print(f"[VERBOSE] Extracted Sprite: {alias_file}")
+                    else:
+                        print(f"\033[1;34m[VERBOSE]\033[0m \033[1;35mExtracted Sprite:\033[0m {
+                              alias_file}")
 
-    # print(f"{config_base_name} extracted successfully.")
+    return sprite_count
