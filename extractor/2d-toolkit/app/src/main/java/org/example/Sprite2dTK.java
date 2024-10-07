@@ -10,35 +10,45 @@ public class Sprite2dTK {
 
     public static void main(String args[]) throws Exception {
         if (args.length != 1 || args[0].equals("--help") || args[0].equals("-h")) {
-            System.out.println("Usage: sprite_extractor_2dtk[.jar] [OPTION] SPRITE_SHEET");
             printHelp();
             return;
         }
 
         String baseName = args[0];
-        File spriteSheet = new File(baseName + ".bytes");
-        File spriteAtlas = new File(baseName + ".png");
+        File bytesFile = new File(baseName + ".bytes");
+        File pngFile = new File(baseName + ".png");
 
-        if (!spriteSheet.exists() || !spriteAtlas.exists()) {
-            System.out.println(
-                    "Make sure you have both " + baseName + ".bytes and " + baseName + ".png in the same directory.");
+        if (!bytesFile.exists()) {
+            System.out.println("\033[1;31mError:\033[0m \033[1;33m" + bytesFile.getName()
+                    + "\033[0m not found. Make sure you have both \033[1;33m" + bytesFile.getName()
+                    + "\033[0m and \033[1;33m" + pngFile.getName() + "\033[0m in the same directory.");
+            return;
+        }
+
+        if (!pngFile.exists()) {
+            System.out.println("\033[1;31mError:\033[0m \033[1;33m" + pngFile.getName()
+                    + "\033[0m not found. Make sure you have both \033[1;33m" + bytesFile.getName()
+                    + "\033[0m and \033[1;33m" + pngFile.getName() + "\033[0m in the same directory.");
             return;
         }
 
         File outputDir = new File(baseName);
-        SpriteExtractor.extract(spriteSheet, outputDir);
+        SpriteExtractor.extract(bytesFile, outputDir);
     }
 
     private static void printHelp() {
         String helpMessage = """
-                A tool to extract sprites from a 2D Toolkit spritesheet.
+                \033[1;34mA tool to extract sprites from a 2D Toolkit spritesheet.
 
-                Arguments:
-                  SPRITE_SHEET    Base name of the sprite sheet files (without extension).
+                \033[1;33mUsage:\033[0m
+                  sprite_extractor_2dtk.jar \033[38;5;214m[OPTION] \033[1;35mSPRITE_SHEET<.lua,.png>\033[0m
+
+                \033[1;33mArguments:\033[0m
+                  \033[1;32mSPRITE_SHEET\033[0m    Base name of the sprite sheet files (without extension).
                                   The tool will look for corresponding .bytes and .png files.
 
-                Options:
-                  --help, -h      Show this help message and exit.
+                \033[1;33mOptions:\033[0m
+                  \033[1;32m--help, -h\033[0m      Show this help message and exit.
                 """;
         System.out.println(helpMessage);
     }
