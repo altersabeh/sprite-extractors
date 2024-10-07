@@ -19,6 +19,16 @@ The jar file will be generated in `app/build/libs`.
 
 ## Usage
 
+You can run the tool as a standalone executable JAR file or using `java -jar`.
+
+### Running as a Standalone Executable JAR File
+
+```sh
+sprite_extractor_2dtk ${SPRITE_SHEET}
+```
+
+### Running with `java -jar`
+
 ```sh
 java -jar sprite_extractor_2dtk.jar ${SPRITE_SHEET}
 ```
@@ -28,6 +38,14 @@ example, if your sprite sheet files are `${SPRITE_SHEET}.bytes` and
 `${SPRITE_SHEET}.png`, use `${SPRITE_SHEET}` as the base name.
 
 ### Example
+
+#### Standalone Executable JAR File
+
+```sh
+sprite_extractor_2dtk image
+```
+
+#### Using `java -jar`
 
 ```sh
 java -jar sprite_extractor_2dtk.jar image
@@ -51,6 +69,12 @@ sample to test the tool.
 
 2. Run the tool with the sample image:
     ```sh
+    # Using the standalone executable JAR file
+    ./sprite_extractor_2dtk.jar sample_image
+    ```
+    or
+    ```sh
+    # Using java -jar
     java -jar sprite_extractor_2dtk.jar sample_image
     ```
 
