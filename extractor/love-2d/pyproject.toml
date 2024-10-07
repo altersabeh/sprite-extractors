@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "love-2d-unpacker"
+version = "1.0.0"
+description = "A simple tool to extract sprites from Love2D games."
+authors = ["AlterSabeh <betamaximum22@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pillow = "^10.4.0"
+lupa = "^2.2"
+
+
+[tool.poetry.scripts]
+sprite_extractor_love2d = "love_2d_unpacker:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
