@@ -1,4 +1,5 @@
 > [!NOTE] This is a fork.
+> 
 > The original project is [SpriteExtractor](https://github.com/kjarrio/SpriteExtractor), which has been converted from Maven to Gradle build system.
 
 # Sprite Extractor
